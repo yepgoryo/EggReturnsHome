@@ -1,0 +1,682 @@
+[gd_scene format=3 uid="uid://ctmk4ynbup3w5"]
+
+[ext_resource type="AudioStream" uid="uid://bat0qggfnrytd" path="res://Audio/Sounds/jump2.wav" id="2_llunk"]
+[ext_resource type="PackedScene" uid="uid://iij8ad6n2wtf" path="res://Prefabs/Egg.tscn" id="4_4aw2d"]
+[ext_resource type="Script" uid="uid://d0rs22bnjfnjb" path="res://Scripts/sound_volume.gd" id="7"]
+[ext_resource type="Texture2D" uid="uid://b5sl2bjikkwfd" path="res://Sprites/Backgrounds/bg_12.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://curh455nu8rt4" path="res://Sprites/Elements/Teleport/old_teleport_1.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dv8g4c7emokmj" path="res://Sprites/Elements/Teleport/old_teleport_2.png" id="10"]
+[ext_resource type="AudioStream" uid="uid://ds0h4ph2c4t80" path="res://Audio/Music/Mozart - The Marriage of Figaro (Ending) (PD Czech National Symphony Orchestra).ogg" id="15"]
+[ext_resource type="FontFile" uid="uid://b45kqc2hq4rq8" path="res://Fonts/Roboto-Regular.ttf" id="15_25nr8"]
+[ext_resource type="Script" uid="uid://bvu1hk42mxgo0" path="res://Scripts/music_volume.gd" id="16"]
+[ext_resource type="FontFile" uid="uid://bcgeq7v7getej" path="res://Fonts/Roboto-MediumItalic.ttf" id="16_ox5cf"]
+[ext_resource type="FontFile" uid="uid://b8fy47334c3qd" path="res://Fonts/Roboto-LightItalic.ttf" id="17_gquni"]
+[ext_resource type="Texture2D" uid="uid://b5bny7nxh0q" path="res://Sprites/Labels/creator.png" id="18_2mgkv"]
+[ext_resource type="FontFile" uid="uid://de84r7kkt3vhy" path="res://Fonts/Roboto-Bold.ttf" id="19_0hqmv"]
+[ext_resource type="Texture2D" uid="uid://1s0l2xfnpba" path="res://Sprites/Elements/Egg/Egg.png" id="20_dkgq2"]
+[ext_resource type="Texture2D" uid="uid://pak3qmqfq2h1" path="res://Sprites/Elements/Stranger/stranger_1.png" id="21_r41ro"]
+[ext_resource type="FontFile" uid="uid://doujr8yimfg36" path="res://Fonts/Roboto-SemiBoldItalic.ttf" id="22_afiig"]
+[ext_resource type="Script" uid="uid://cqa3igyhe0p4j" path="res://Scripts/end_exit_to_menu.gd" id="23"]
+[ext_resource type="Texture2D" uid="uid://c3183wrrdlmwo" path="res://Sprites/GrayFloor/leftback.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://b1qkp3tqpmim8" path="res://Sprites/GrayFloor/lefttop.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://dcpdkwfct6pjk" path="res://Sprites/GrayFloor/leftbackbottom.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://bsgxb3ig0tabb" path="res://Sprites/GrayFloor/centertop.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://baxwr8wtscxq4" path="res://Sprites/GrayFloor/centerbottom.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://dcmcleonq5bqy" path="res://Sprites/GrayFloor/rightback.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://ct4brqyghefby" path="res://Sprites/GrayFloor/rightbottom.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://8vktjfja6g1m" path="res://Sprites/GrayFloor/rightPattern.png" id="31"]
+
+[sub_resource type="Animation" id="56"]
+resource_name = "TeleportConsole"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeleportSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("9"), ExtResource("10")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy2aa"]
+_data = {
+&"TeleportConsole": SubResource("56")
+}
+
+[sub_resource type="Gradient" id="Gradient_oy2aa"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4aw2d"]
+gradient = SubResource("Gradient_oy2aa")
+
+[sub_resource type="Animation" id="57"]
+resource_name = "EggFallsTeleport"
+length = 25.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../EggJumpSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["jump"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:CanExit")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(4, 4), Vector2(0.73, 0.73)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fin:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MadeBy:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicUsed:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PerformedBy:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 15, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ThanksForPlaying:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ThanksForPlaying/PressAnyKey:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_25nr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MadeBy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicUsed:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PerformedBy:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ThanksForPlaying:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ThanksForPlaying/PressAnyKey:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtoh8"]
+_data = {
+&"EggFallsTeleport": SubResource("57"),
+&"RESET": SubResource("Animation_25nr8")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vy35"]
+font = ExtResource("15_25nr8")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_5n7sw"]
+font = ExtResource("16_ox5cf")
+font_size = 64
+shadow_color = Color(0.72156864, 0.16862746, 0.16862746, 1)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3nuc"]
+font = ExtResource("17_gquni")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_u1p0f"]
+font = ExtResource("15_25nr8")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2uke"]
+font = ExtResource("19_0hqmv")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_oqxeb"]
+font = ExtResource("22_afiig")
+font_size = 32
+font_color = Color(0.72156864, 0.16862746, 0.16862746, 1)
+
+[sub_resource type="RectangleShape2D" id="52"]
+size = Vector2(3795.58, 44)
+
+[sub_resource type="RectangleShape2D" id="53"]
+size = Vector2(3795.58, 740.086)
+
+[node name="Main" type="Node" unique_id=846859598]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=824853090]
+position = Vector2(598.817, 588.823)
+zoom = Vector2(4, 4)
+limit_left = -65536
+limit_top = -65536
+limit_right = 65535
+limit_bottom = 65535
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+
+[node name="OldTeleport" type="Node2D" parent="." unique_id=841500418]
+position = Vector2(594.685, 566.615)
+
+[node name="TeleportSprite" type="Sprite2D" parent="OldTeleport" unique_id=2018299447]
+scale = Vector2(0.189899, 0.189899)
+texture = ExtResource("9")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OldTeleport" unique_id=279032526]
+libraries/ = SubResource("AnimationLibrary_oy2aa")
+autoplay = &"TeleportConsole"
+
+[node name="Egg" parent="." unique_id=1250026596 instance=ExtResource("4_4aw2d")]
+position = Vector2(582.00006, 564)
+rotation = 0.47520235
+scale = Vector2(0.99999994, 0.99999994)
+Stopped = true
+LoopFrequency = 3
+
+[node name="EggJumpSound" type="AudioStreamPlayer" parent="." unique_id=888917771]
+stream = ExtResource("2_llunk")
+script = ExtResource("7")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=634794235]
+z_index = -6
+position = Vector2(598.058, 572.913)
+scale = Vector2(0.628074, 0.628074)
+texture = ExtResource("8")
+
+[node name="EndingScreen" type="CanvasLayer" parent="." unique_id=1648100101]
+layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="EndingScreen" unique_id=1850753394]
+visible = false
+texture = SubResource("GradientTexture2D_4aw2d")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 720)
+
+[node name="StreamPlayer" type="AudioStreamPlayer" parent="EndingScreen" unique_id=375910103]
+stream = ExtResource("15")
+script = ExtResource("16")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndingScreen" unique_id=615107862]
+libraries/ = SubResource("AnimationLibrary_jtoh8")
+autoplay = &"EggFallsTeleport"
+script = ExtResource("23")
+
+[node name="Fin" type="Label" parent="EndingScreen" unique_id=1204917081]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -75.5
+offset_right = 103.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fin."
+label_settings = SubResource("LabelSettings_5vy35")
+
+[node name="MadeBy" type="Control" parent="EndingScreen" unique_id=1313393557]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Label" type="Label" parent="EndingScreen/MadeBy" unique_id=1309453181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -267.0
+offset_right = 118.5
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Made by"
+label_settings = SubResource("LabelSettings_5n7sw")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="EndingScreen/MadeBy" unique_id=1333025179]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -28.0
+offset_right = 412.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "yepgoryo
+(Egor Yakovlev)"
+label_settings = SubResource("LabelSettings_f3nuc")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="EndingScreen/MadeBy" unique_id=1301318211]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 238.0
+offset_right = 579.0
+offset_bottom = 589.0
+texture = ExtResource("18_2mgkv")
+
+[node name="MusicUsed" type="Control" parent="EndingScreen" unique_id=1015513193]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Label3" type="Label" parent="EndingScreen/MusicUsed" unique_id=1506770720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -267.0
+offset_right = 118.5
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music used"
+label_settings = SubResource("LabelSettings_5n7sw")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="EndingScreen/MusicUsed" unique_id=1082110512]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = -103.0
+offset_right = 491.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Piano Concerto no. 17 in G major - III. Allegretto (first part)
+Piano Concerto no. 17 in G major - III. Allegretto (second part)
+Violin Concerto no. 2 in D major, K. 211 - I. Allegro moderato
+Oboe Concerto in C, K.314 271k - I. Allegro
+Oboe Concerto in C, K.314 271k - II. Andantino
+Trio No.1 G major - II. Andante"
+label_settings = SubResource("LabelSettings_u1p0f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="EndingScreen/MusicUsed" unique_id=818152063]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = -163.0
+offset_right = 491.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wolfgang Amadeus Mozart:"
+label_settings = SubResource("LabelSettings_k2uke")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerformedBy" type="Control" parent="EndingScreen" unique_id=260119675]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Label3" type="Label" parent="EndingScreen/PerformedBy" unique_id=1061993387]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -171.0
+offset_right = 279.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music performed by"
+label_settings = SubResource("LabelSettings_5n7sw")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="EndingScreen/PerformedBy" unique_id=298796330]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = 7.0
+offset_right = 491.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Czech National Symphony Orchestra
+David H. Porter
+European Archive
+ Musopen String Quartet"
+label_settings = SubResource("LabelSettings_k2uke")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThanksForPlaying" type="Control" parent="EndingScreen" unique_id=863487350]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Label3" type="Label" parent="EndingScreen/ThanksForPlaying" unique_id=860271350]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -38.0
+offset_right = 279.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for playing!"
+label_settings = SubResource("LabelSettings_5n7sw")
+horizontal_alignment = 1
+
+[node name="EggTexture" type="TextureRect" parent="EndingScreen/ThanksForPlaying" unique_id=829232449]
+layout_mode = 0
+offset_left = 301.00003
+offset_top = 310.0
+offset_right = 373.25156
+offset_bottom = 408.20593
+rotation = 0.31879994
+texture = ExtResource("20_dkgq2")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="EndingScreen/ThanksForPlaying" unique_id=419326574]
+texture_filter = 1
+layout_mode = 0
+offset_left = 923.0
+offset_top = 288.0
+offset_right = 1005.0
+offset_bottom = 404.6479
+texture = ExtResource("21_r41ro")
+expand_mode = 1
+
+[node name="PressAnyKey" type="ColorRect" parent="EndingScreen/ThanksForPlaying" unique_id=746067875]
+visible = false
+layout_mode = 0
+offset_left = 663.0
+offset_top = 423.0
+offset_right = 923.0
+offset_bottom = 473.0
+
+[node name="Label" type="Label" parent="EndingScreen/ThanksForPlaying/PressAnyKey" unique_id=793385191]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 50.0
+text = "PRESS ANY KEY"
+label_settings = SubResource("LabelSettings_oqxeb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=223878906]
+position = Vector2(566.749, 659.673)
+
+[node name="FloorLeft" type="Node2D" parent="Platform4" unique_id=1180694419]
+position = Vector2(-1862, 0)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=2108671576]
+z_index = -1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=641741085]
+z_index = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("25")
+
+[node name="Wall" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=1929797517]
+z_index = 2
+position = Vector2(0, 387.647)
+scale = Vector2(0.15, 2.09849)
+texture = ExtResource("26")
+
+[node name="FloorCenter" type="Node2D" parent="Platform4" unique_id=1680006036]
+scale = Vector2(64, 1)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorCenter" unique_id=1916257045]
+z_index = -1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("27")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorCenter" unique_id=1299870977]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("28")
+
+[node name="FloorRight" type="Node2D" parent="Platform4" unique_id=2087511568]
+position = Vector2(1862, 0)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorRight" unique_id=1459863082]
+z_index = -2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("29")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorRight" unique_id=1285375994]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("30")
+
+[node name="Wall" type="Sprite2D" parent="Platform4/FloorRight" unique_id=1209846361]
+z_index = -2
+position = Vector2(0, 397.809)
+scale = Vector2(0.15, 2.13018)
+texture = ExtResource("31")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=1902706714]
+position = Vector2(-2.40742, 1.46539)
+shape = SubResource("52")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform4" unique_id=484602394]
+position = Vector2(-2.40742, 391.446)
+shape = SubResource("53")
+
+[node name="Platform" type="Sprite2D" parent="Platform4" unique_id=961539398]
+z_index = 2
+position = Vector2(-166.331, 393.157)
+scale = Vector2(5.78622, 2.12876)
+texture = ExtResource("26")
+
+[node name="Platform1" type="Sprite2D" parent="Platform4" unique_id=677423870]
+z_index = -3
+position = Vector2(1673.36, 394.381)
+scale = Vector2(0.763316, 2.13549)
+texture = ExtResource("26")

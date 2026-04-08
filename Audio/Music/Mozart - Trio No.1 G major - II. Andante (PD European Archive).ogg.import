@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b7efpqvl4qel5"
+path="res://.godot/imported/Mozart - Trio No.1 G major - II. Andante (PD European Archive).ogg-8a8d79e8b4cf9809527ebd7eec900e60.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Mozart - Trio No.1 G major - II. Andante (PD European Archive).ogg"
+dest_files=["res://.godot/imported/Mozart - Trio No.1 G major - II. Andante (PD European Archive).ogg-8a8d79e8b4cf9809527ebd7eec900e60.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

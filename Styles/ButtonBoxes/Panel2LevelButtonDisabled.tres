@@ -1,0 +1,5 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://cwgij5helkpet"]
+
+[resource]
+bg_color = Color(0.227451, 0.254902, 0.27451, 1)
+corner_radius_top_left = 50

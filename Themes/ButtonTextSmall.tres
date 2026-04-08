@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://c6eol8kal722r"]
+
+[ext_resource type="FontFile" uid="uid://d231as5eegktc" path="res://Fonts/Roboto-Light.ttf" id="1_ysev4"]
+
+[resource]
+default_font = ExtResource("1_ysev4")
+default_font_size = 36

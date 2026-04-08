@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbrkspgicp62e"
+path="res://.godot/imported/Mozart - Piano Concerto no. 17 in G major - III. Allegretto (second part) (PD European Archive).ogg-7c7b11feae6970420f7d842253deb19a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Mozart - Piano Concerto no. 17 in G major - III. Allegretto (second part) (PD European Archive).ogg"
+dest_files=["res://.godot/imported/Mozart - Piano Concerto no. 17 in G major - III. Allegretto (second part) (PD European Archive).ogg-7c7b11feae6970420f7d842253deb19a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

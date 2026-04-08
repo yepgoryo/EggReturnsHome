@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ds0h4ph2c4t80"
+path="res://.godot/imported/Mozart - The Marriage of Figaro (Ending) (PD Czech National Symphony Orchestra).ogg-090f2785d485233ec651f250d6ff3ac6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Mozart - The Marriage of Figaro (Ending) (PD Czech National Symphony Orchestra).ogg"
+dest_files=["res://.godot/imported/Mozart - The Marriage of Figaro (Ending) (PD Czech National Symphony Orchestra).ogg-090f2785d485233ec651f250d6ff3ac6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,4 @@
+ - Release the game into public domain.
+ - Initial release of the game on Android.
+ - Ported the game to Godot Engine 4.
+ - Re-worked Main Menu UI.

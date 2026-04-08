@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bx3b6bpk1gq02"]
+
+[ext_resource type="FontFile" uid="uid://b45kqc2hq4rq8" path="res://Fonts/Roboto-Regular.ttf" id="1_3fcyw"]
+
+[resource]
+default_font = ExtResource("1_3fcyw")
+default_font_size = 40

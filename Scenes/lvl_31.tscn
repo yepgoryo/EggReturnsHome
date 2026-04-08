@@ -1,0 +1,418 @@
+[gd_scene format=3 uid="uid://dr01avv4r10m"]
+
+[ext_resource type="Script" uid="uid://ljsbuj6darpm" path="res://Scripts/teleport.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://uh8op7v03q7o" path="res://Sprites/Elements/Teleport/TeleportLoop1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bx3qhsldqhhlk" path="res://Sprites/Elements/Teleport/TeleportBottom.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ca1x10hhlb5d4" path="res://Sprites/Elements/Teleport/TeleportLoop2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c88fcx3ov5xlj" path="res://Sprites/Elements/Teleport/TeleportLoop3.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://k326cchhjo3c" path="res://Sprites/Hints/teletraffic.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://hr512mhis021" path="res://Sprites/Hints/teletraffic_2.png" id="9"]
+[ext_resource type="Script" uid="uid://vot8oudglwgx" path="res://Scripts/camera_change.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://iij8ad6n2wtf" path="res://Prefabs/Egg.tscn" id="11"]
+[ext_resource type="Script" uid="uid://c1ijfd5dqej5h" path="res://Scripts/death_script.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://bmw0xtoocokr1" path="res://Sprites/Backgrounds/bg_4.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://catc4belnnfy1" path="res://Sprites/Elements/Spikes/spikes_all_3.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://c3183wrrdlmwo" path="res://Sprites/GrayFloor/leftback.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://b1qkp3tqpmim8" path="res://Sprites/GrayFloor/lefttop.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://dcpdkwfct6pjk" path="res://Sprites/GrayFloor/leftbackbottom.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://bsgxb3ig0tabb" path="res://Sprites/GrayFloor/centertop.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://baxwr8wtscxq4" path="res://Sprites/GrayFloor/centerbottom.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://dcmcleonq5bqy" path="res://Sprites/GrayFloor/rightback.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://ct4brqyghefby" path="res://Sprites/GrayFloor/rightbottom.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://8vktjfja6g1m" path="res://Sprites/GrayFloor/rightPattern.png" id="26"]
+
+[sub_resource type="Animation" id="2"]
+resource_name = "TeleportLoop"
+length = 0.45
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeleportLoop:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("2"), ExtResource("4"), ExtResource("5"), ExtResource("5")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01u8o"]
+_data = {
+&"TeleportLoop": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(118.8056, 20.9554)
+
+[sub_resource type="Animation" id="3"]
+resource_name = "CameraStart"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 17.2, 20),
+"transitions": PackedFloat32Array(1, -4, 4.92458),
+"update": 0,
+"values": [Vector2(5.5, 5.5), Vector2(4.5, 4.5), Vector2(1.292, 1.292)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 17.2, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(707.003, 614.002), Vector2(707.003, 614.002), Vector2(720.745, 556.769)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Egg:Stopped")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 17.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Egg/Camera2D:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Egg:audioStopped")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_01u8o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Egg/Camera2D:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Egg:audioStopped")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3oyam"]
+_data = {
+&"CameraStart": SubResource("3"),
+&"RESET": SubResource("Animation_01u8o")
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "TeleTrafficTerminal"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8"), ExtResource("9")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cojfm"]
+_data = {
+&"TeleTrafficTerminal": SubResource("4")
+}
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(4898.3, 7.18738)
+
+[sub_resource type="RectangleShape2D" id="14"]
+size = Vector2(5070.7, 44)
+
+[sub_resource type="RectangleShape2D" id="15"]
+size = Vector2(5070.7, 740.086)
+
+[node name="Main" type="Node" unique_id=618922141]
+
+[node name="Teleport" type="Area2D" parent="." unique_id=1179490321]
+position = Vector2(2562.72, 567.794)
+gravity = 98.0
+script = ExtResource("1")
+
+[node name="TeleportLoop" type="Sprite2D" parent="Teleport" unique_id=60136575]
+z_index = -4
+position = Vector2(12.0419, -621.1)
+scale = Vector2(0.28, 2.50046)
+texture = ExtResource("2")
+
+[node name="TeleportBottom" type="Sprite2D" parent="Teleport" unique_id=103921750]
+position = Vector2(12.0419, -43.5533)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Teleport" unique_id=2098813613]
+libraries/ = SubResource("AnimationLibrary_01u8o")
+autoplay = &"TeleportLoop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport" unique_id=1294773189]
+position = Vector2(1.5, 0)
+shape = SubResource("1")
+
+[node name="CameraAnimation" type="Node" parent="." unique_id=1139785689]
+
+[node name="Camera2D" type="Camera2D" parent="CameraAnimation" unique_id=1321318458]
+z_index = 4
+position = Vector2(707.003, 614.002)
+offset = Vector2(0, -70)
+zoom = Vector2(5.5, 5.5)
+limit_left = -65536
+limit_top = -65536
+limit_right = 65535
+limit_bottom = 65535
+position_smoothing_speed = 2.0
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraAnimation" unique_id=560667396]
+libraries/ = SubResource("AnimationLibrary_3oyam")
+autoplay = &"CameraStart"
+
+[node name="TeleTraffic" type="Node2D" parent="." unique_id=1740927907]
+position = Vector2(705.107, 450.828)
+
+[node name="Sprite2D" type="Sprite2D" parent="TeleTraffic" unique_id=1153753254]
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TeleTraffic" unique_id=1902562862]
+libraries/ = SubResource("AnimationLibrary_cojfm")
+autoplay = &"TeleTrafficTerminal"
+script = ExtResource("10")
+
+[node name="Egg" parent="." unique_id=438325698 instance=ExtResource("11")]
+position = Vector2(720.745, 556.769)
+rotation = 1.7592919
+Stopped = true
+
+[node name="Camera2D" type="Camera2D" parent="Egg" unique_id=698412262]
+z_index = 4
+offset = Vector2(0, -70)
+zoom = Vector2(1.292, 1.292)
+limit_left = -65536
+limit_top = -65536
+limit_right = 65535
+limit_bottom = 65535
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+
+[node name="WorldEdges" type="Node2D" parent="." unique_id=541660968]
+position = Vector2(573.179, 265.586)
+
+[node name="DeathArea" type="Area2D" parent="WorldEdges" unique_id=1956650853]
+position = Vector2(281.248, 397.265)
+gravity = 98.0
+script = ExtResource("12")
+
+[node name="DeathShape" type="CollisionShape2D" parent="WorldEdges/DeathArea" unique_id=2040744974]
+shape = SubResource("5")
+
+[node name="DeathArea2" type="Area2D" parent="WorldEdges" unique_id=742353567]
+position = Vector2(378.018, -408.772)
+gravity = 98.0
+script = ExtResource("12")
+
+[node name="DeathShape" type="CollisionShape2D" parent="WorldEdges/DeathArea2" unique_id=309100284]
+shape = SubResource("5")
+
+[node name="Edge" type="CharacterBody2D" parent="WorldEdges" unique_id=1879829125]
+position = Vector2(-280.719, 51.4388)
+rotation = -1.5707964
+input_pickable = true
+
+[node name="DeathShape" type="CollisionShape2D" parent="WorldEdges/Edge" unique_id=1127965446]
+shape = SubResource("5")
+
+[node name="Edge2" type="CharacterBody2D" parent="WorldEdges" unique_id=1598098286]
+position = Vector2(2169.41, 120.671)
+rotation = -1.5707964
+input_pickable = true
+
+[node name="DeathShape" type="CollisionShape2D" parent="WorldEdges/Edge2" unique_id=298035586]
+shape = SubResource("5")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1639534174]
+layer = -6
+
+[node name="Background" type="Sprite2D" parent="BackgroundLayer" unique_id=35877469]
+z_index = -6
+position = Vector2(501.665, 310.704)
+scale = Vector2(5.22655, 5.22655)
+texture = ExtResource("13")
+
+[node name="Spikes" type="Area2D" parent="." unique_id=1515493787]
+position = Vector2(1719.15, 564.586)
+gravity = 98.0
+script = ExtResource("12")
+spikes = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes" unique_id=863446003]
+polygon = PackedVector2Array(-7.14244, -13.8038, -14.8914, 14.6467, 14.2944, 14.7599, 7.007, -14.5064, -0.374878, 12.8973)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes" unique_id=232480626]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("18")
+
+[node name="Spikes1" type="Area2D" parent="." unique_id=1477122399]
+position = Vector2(2108.88, 564.586)
+gravity = 98.0
+script = ExtResource("12")
+spikes = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes1" unique_id=1819460427]
+polygon = PackedVector2Array(-7.14244, -13.8038, -14.8914, 14.6467, 14.2944, 14.7599, 7.007, -14.5064, -0.374878, 12.8973)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes1" unique_id=1728870073]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("18")
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1462449613]
+position = Vector2(1062.47, 599.872)
+
+[node name="FloorLeft" type="Node2D" parent="Platform4" unique_id=488717620]
+position = Vector2(-2500, 0)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=1588611811]
+z_index = -1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("19")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=2001865011]
+z_index = 2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("20")
+
+[node name="Wall" type="Sprite2D" parent="Platform4/FloorLeft" unique_id=1971271708]
+z_index = 2
+position = Vector2(0, 387.647)
+scale = Vector2(0.15, 2.09849)
+texture = ExtResource("21")
+
+[node name="FloorCenter" type="Node2D" parent="Platform4" unique_id=1644252996]
+scale = Vector2(85, 1)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorCenter" unique_id=761295935]
+z_index = -1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("22")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorCenter" unique_id=360808369]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("23")
+
+[node name="FloorRight" type="Node2D" parent="Platform4" unique_id=1275656314]
+position = Vector2(2500, 0)
+
+[node name="Back" type="Sprite2D" parent="Platform4/FloorRight" unique_id=796738054]
+z_index = -2
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24")
+
+[node name="Top" type="Sprite2D" parent="Platform4/FloorRight" unique_id=1985082195]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("25")
+
+[node name="Wall" type="Sprite2D" parent="Platform4/FloorRight" unique_id=1903651854]
+z_index = -2
+position = Vector2(0, 397.809)
+scale = Vector2(0.15, 2.13018)
+texture = ExtResource("26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=1706312231]
+position = Vector2(-2.40742, 1.46539)
+shape = SubResource("14")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform4" unique_id=1978502803]
+position = Vector2(-2.40742, 391.446)
+shape = SubResource("15")
+
+[node name="Platform" type="Sprite2D" parent="Platform4" unique_id=1965498271]
+z_index = 2
+position = Vector2(-80.5122, 393.157)
+scale = Vector2(8.30175, 2.12876)
+texture = ExtResource("21")
+
+[node name="Platform1" type="Sprite2D" parent="Platform4" unique_id=2073785482]
+z_index = -3
+position = Vector2(2404.92, 394.381)
+scale = Vector2(0.446543, 2.13549)
+texture = ExtResource("21")
+
+[connection signal="body_entered" from="Teleport" to="Teleport" method="_on_Teleport_body_enter"]
+[connection signal="body_entered" from="WorldEdges/DeathArea" to="WorldEdges/DeathArea" method="_on_body_enter"]
+[connection signal="body_entered" from="WorldEdges/DeathArea2" to="WorldEdges/DeathArea2" method="_on_body_enter"]
+[connection signal="body_entered" from="Spikes" to="Spikes" method="_on_body_enter"]
+[connection signal="body_entered" from="Spikes1" to="Spikes1" method="_on_body_enter"]

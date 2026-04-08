@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b7xlep5fd6uwg"
+path="res://.godot/imported/Mozart - String Quartet no. 19 in C major Dissonant, K. 465 (PD Musopen String Quartet).ogg-6570d90fbe7358f3de5c636741d92729.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Mozart - String Quartet no. 19 in C major Dissonant, K. 465 (PD Musopen String Quartet).ogg"
+dest_files=["res://.godot/imported/Mozart - String Quartet no. 19 in C major Dissonant, K. 465 (PD Musopen String Quartet).ogg-6570d90fbe7358f3de5c636741d92729.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

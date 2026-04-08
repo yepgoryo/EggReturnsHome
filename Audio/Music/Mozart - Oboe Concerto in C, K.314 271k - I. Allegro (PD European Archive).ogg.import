@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbe56mhkubfg6"
+path="res://.godot/imported/Mozart - Oboe Concerto in C, K.314 271k - I. Allegro (PD European Archive).ogg-d88f4837398e29f191250671773fdb56.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Mozart - Oboe Concerto in C, K.314 271k - I. Allegro (PD European Archive).ogg"
+dest_files=["res://.godot/imported/Mozart - Oboe Concerto in C, K.314 271k - I. Allegro (PD European Archive).ogg-d88f4837398e29f191250671773fdb56.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

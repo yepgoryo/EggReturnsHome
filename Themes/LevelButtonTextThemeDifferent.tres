@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://froofais22yy"]
+
+[ext_resource type="FontFile" uid="uid://dcdxn7sdovqgm" path="res://Fonts/Roboto-BlackItalic.ttf" id="1_878th"]
+
+[resource]
+default_font = ExtResource("1_878th")
+default_font_size = 40
