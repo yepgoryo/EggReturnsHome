@@ -1,10 +1,6 @@
 extends Control
 
-var BTC_WALLET = "bc1q6jp0g9jhrcx5l75gyg4c698yvg5qtm08j826p5"
-var ETH_WALLET = "0x7b3E49fd98D64E965a4F26F67C236Dc80C31766D"
-var XMR_WALLET = "87Yt5dCNEoEb3WhpfgjUhGFSJMgPaPhb65jMaDLLoyZ4DEBFx62AGzYVii3tzEfqBz8c3HXJ8QyjM9KASh1iRoqpPLAdN7r"
-
-var REPO_URL = "https://github.com/yepgoryo/EggReturnsHome"
+var constants = load("res://Scripts/constants.gd")
 
 var PrevButton = ""
 
@@ -48,6 +44,7 @@ func _ready():
 				get_node("Panel4/LevelButtons/Level" + str(i - 30) + "/LevelButton").set_text("?!")
 			if not isLevelOpened:
 				get_node("Panel4/LevelButtons/Level" + str(i - 30) + "/LevelButton").set_disabled(true)
+	get_node("About/AboutPanel/Version").set_text("Egg Returns Home v" + constants.VERSION)
 
 func get_level_time_str(level):
 	var level_timer = get_node("/root/AutoLoad").Data_LevelsScores[level]
@@ -231,17 +228,17 @@ func _on_Quit_pressed():
 
 
 func _on_btc_pressed() -> void:
-	DisplayServer.clipboard_set(BTC_WALLET)
+	DisplayServer.clipboard_set(constants.BTC_WALLET)
 	get_node("Donate/AnimationPlayer").play("clipboard_copied")
 
 
 func _on_eth_pressed() -> void:
-	DisplayServer.clipboard_set(ETH_WALLET)
+	DisplayServer.clipboard_set(constants.ETH_WALLET)
 	get_node("Donate/AnimationPlayer").play("clipboard_copied")
 
 
 func _on_xmr_pressed() -> void:
-	DisplayServer.clipboard_set(XMR_WALLET)
+	DisplayServer.clipboard_set(constants.XMR_WALLET)
 	get_node("Donate/AnimationPlayer").play("clipboard_copied")
 
 func _on_donate_pressed() -> void:
@@ -258,7 +255,7 @@ func back_from_donate() -> void:
 
 
 func _on_repo_pressed() -> void:
-	OS.shell_open(REPO_URL)
+	OS.shell_open(constants.REPO_URL)
 
 
 func _on_left_up_pressed() -> void:

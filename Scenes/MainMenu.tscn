@@ -1174,17 +1174,16 @@ theme = ExtResource("13_ke15f")
 text = "About"
 horizontal_alignment = 1
 
-[node name="Label1" type="Label" parent="CanvasLayer/Menu/About/AboutPanel" unique_id=1507596313]
+[node name="Version" type="Label" parent="CanvasLayer/Menu/About/AboutPanel" unique_id=1507596313]
 layout_mode = 0
 offset_left = 256.10754
 offset_top = 157.0
-offset_right = 511.10754
+offset_right = 605.99963
 offset_bottom = 186.0
 size_flags_vertical = 0
 mouse_filter = 1
 theme = SubResource("Theme_ow4wq")
-text = "Egg Returns Home v1.6"
-horizontal_alignment = 1
+text = "Egg Returns Home"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Menu/About/AboutPanel" unique_id=312124440]
 layout_mode = 0
