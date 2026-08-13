@@ -7,6 +7,10 @@
     alt="Get it on F-Droid"
     height="80">](https://f-droid.org/packages/com.yepgoryo.EggReturnsHome)
 
+| :robot: :x: No AI Used                                                                                    |
+|:----------------------------------------------------------------------------------------------------------|
+| This program has __no code__ assisted/written by the AI. It was completely written and tested by a human. |
+
 <img src="metadata/en-US/images/phoneScreenshots/1.jpg" alt="Egg Returns Home Screenshot 1" width="500"/>
 <img src="metadata/en-US/images/phoneScreenshots/2.jpg" alt="Egg Returns Home Screenshot 2" width="500"/>
 <img src="metadata/en-US/images/phoneScreenshots/3.jpg" alt="Egg Returns Home Screenshot 3" width="500"/>
